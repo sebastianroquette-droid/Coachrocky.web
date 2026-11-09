@@ -29,7 +29,7 @@ const ÜberRockyPage = () => (
           </div>
           <div>
             <img
-              src="https://horizons-cdn.hostinger.com/ad386736-af24-4dd7-90cb-e0d579c78642/e989f0adcaaf805a236422f9dd8d3ba8.jpg"
+              src="/fotos/ueber-rocky-portraet.jpg"
               alt="Porträt von Coach Rocky"
               className="rounded-sm w-full aspect-[4/3] object-cover object-right"
               width="800"
@@ -58,7 +58,7 @@ const ÜberRockyPage = () => (
           Der Unterschied zu einem Standard-Studio-Plan ist nicht die Übungsauswahl, sondern wer den Plan macht. Ein Standardplan ist für einen Durchschnittskörper geschrieben, den es nicht gibt. Ich sehe mir deinen Körper einzeln an und passe an, was nicht passt, Woche für Woche. Dazu gehört Ehrlichkeit: Ich sage dir, was ich für sinnvoll halte, auch wenn es nicht der einfachste Weg ist.
         </p>
         </div>
-        <img src="https://horizons-cdn.hostinger.com/ad386736-af24-4dd7-90cb-e0d579c78642/f61f7f40258264d41ddb07a5ceb0cdf5.jpg" alt="Coach Rocky sitzt lächelnd auf einer Bank im Studio" className="rounded-sm w-full max-h-[360px] md:w-[390px] md:max-h-[520px] md:mx-auto aspect-[3/4] object-cover" width="600" height="800" loading="lazy" />
+        <img src="/fotos/ueber-rocky-bank.jpg" alt="Coach Rocky sitzt lächelnd auf einer Bank im Studio" className="rounded-sm w-full max-h-[360px] md:w-[390px] md:max-h-[520px] md:mx-auto aspect-[3/4] object-cover" width="600" height="800" loading="lazy" />
       </div>
     </section>
 

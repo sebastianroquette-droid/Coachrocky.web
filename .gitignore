@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment files (contain secrets — never commit or export)
+.env
+.env.*
+!.env.example
+
+# PocketBase runtime data
+pb_data/
+apps/pocketbase/pb_data/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/

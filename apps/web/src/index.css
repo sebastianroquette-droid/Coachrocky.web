@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Coach Rocky — Design-Tokens (Quelle: tokens.json / Brandbook v1.0)
+ * Neue Farben, Grössen oder Stufen werden zuerst als Token in tokens.json angelegt.
+ * Werte der shadcn-Variablen als HSL-Tripel (H S% L%).
+ */
+@layer base {
+  :root {
+    /* Fläche & Text */
+    --background: 0 0% 100%;            /* Weiss  #FFFFFF */
+    --foreground: 0 0% 0%;              /* Schwarz #000000 */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    /* Marke */
+    --primary: 216.8 52.4% 50.6%;       /* Rocky Blau #3F72C3 */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 216.8 60.8% 90%;   /* Rocky Blau hell #D6E2F5 */
+    --secondary: 40 58.1% 87.8%;        /* Sand #F2E6CE */
+    --secondary-foreground: 0 0% 0%;
+
+    /* Inaktiv */
+    --muted: 192 7.2% 86.5%;            /* Grau #DADEDF */
+    --muted-foreground: 0 0% 0%;        /* Sekundärtext wird über rgba(0,0,0,.6) gesetzt, siehe tailwind.config */
+
+    /* Zustände */
+    --accent: 216.8 60.8% 90%;          /* Hover / ausgewählt = Rocky Blau hell */
+    --accent-foreground: 0 0% 0%;
+    --ring: 216.8 52.4% 50.6%;
+
+    /* Status (Fläche + Icon, Text darauf immer schwarz) */
+    --success: 118.1 56.6% 37.1%;       /* Bestätigungsgrün #2D9429 */
+    --success-foreground: 0 0% 0%;
+    --success-bg: 118.1 60.8% 90%;      /* #D7F5D6 */
+    --destructive: 0 73.2% 49.8%;       /* Warnrot #DC2222 */
+    --destructive-foreground: 0 0% 100%;
+    --destructive-bg: 0 60.8% 90%;      /* #F5D6D6 */
+
+    /* Radien */
+    --radius: 8px;
+    --radius-xs: 2px;
+    --radius-sm: 4px;   /* Eingabefelder, Tags, Bilder, Diagrammsegmente */
+    --radius-md: 8px;   /* Buttons, Statusboxen */
+    --radius-lg: 12px;  /* Karten */
+    --radius-xl: 16px;  /* Modals */
+    --radius-full: 999px;
+
+    --font-body: 'Barlow', system-ui, sans-serif;
+    --font-heading: 'Figtree Variable', system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-size: 16px;
+    line-height: 1.6;
+    font-feature-settings: "tnum" 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Tastatur-Fokus für Links und Aufklapp-Listen: sichtbarer Rahmen wie Buttons
+     (2px Rocky Blau, 2px Abstand, Radius 4px). */
+  a:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid #3F72C3;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Gestaffelte Gewichte: h1 = 900, h2–h6 = 700. Das Gewicht markiert die Ebene. */
+  h1 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+  }
+
+  h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
+
+  /* Bold im Fließtext (Barlow): nur Medium 500, keine 600/700 */
+  strong, b { font-weight: 500; }
+
+  /* Zahlen in Tabellen und Preisen: tabular figures */
+  table, .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Typografie-Skala (Brandbook Kap. 5). Mobil / Desktop, Umschaltung bei 768 px. */
+  .t-display { font-family: var(--font-heading); font-weight: 900; font-size: 34px; line-height: 1.1; }
+  .t-h1      { font-family: var(--font-heading); font-weight: 900; font-size: 28px; line-height: 1.15; }
+  .t-h2      { font-family: var(--font-heading); font-weight: 700; font-size: 22px; line-height: 1.2; }
+  .t-h3      { font-family: var(--font-heading); font-weight: 700; font-size: 22px; line-height: 1.3; }
+  @media (min-width: 768px) {
+    .t-display { font-size: 48px; }
+    .t-h1      { font-size: 36px; }
+    .t-h2      { font-size: 28px; }
+  }
+
+  /* Abstände: Vielfache von 4, Tokens 64 / 96 */
+  .section-spacing {
+    @apply py-16 md:py-24;
+  }
+
+  /* Primär: Fläche Rocky Blau, Schrift weiss. Hover/Aktiv: Rocky Blau hell, Schrift schwarz. */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground border-2 border-primary font-body font-medium text-label min-h-[48px] px-6 inline-flex items-center justify-center gap-2 text-center whitespace-normal transition-colors hover:bg-primary-light hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:bg-muted disabled:border-muted disabled:text-muted-foreground disabled:cursor-not-allowed;
+    border-radius: var(--radius-md);
+  }
+
+  /* Sekundär: Outline — Rahmen und Schrift in Rocky Blau, Fläche transparent. Keine zweite Farbe. */
+  .btn-secondary {
+    @apply bg-background border-2 border-primary text-primary font-body font-medium text-label min-h-[48px] px-6 inline-flex items-center justify-center gap-2 text-center whitespace-normal transition-colors hover:bg-primary-light hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:border-muted disabled:text-muted-foreground disabled:cursor-not-allowed;
+    border-radius: var(--radius-md);
+  }
+
+  /* Statusboxen: helle Fläche + Rand in Statusfarbe + schwarzer Text + Icon oder Wort */
+  .status-box {
+    @apply flex items-start gap-3 border-2 p-4 text-foreground;
+    border-radius: var(--radius-md);
+  }
+  .status-success { @apply bg-success-bg border-success; }
+  .status-error   { @apply bg-destructive-bg border-destructive; }
+  .status-info    { @apply bg-primary-light border-primary; }
+
+  /* Sand-Flächen auf Weiss brauchen einen Rahmen (Kontrast 1.24) */
+  .surface-sand {
+    @apply bg-secondary border border-border;
+  }
+
+  /* Scrollbar verbergen (Karusell) – Funktionalität bleibt erhalten */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Modals / Dialogs: Radius xl */
+  [role="dialog"] {
+    border-radius: var(--radius-xl) !important;
+  }
+}

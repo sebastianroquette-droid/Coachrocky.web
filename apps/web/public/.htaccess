@@ -1,0 +1,49 @@
+# Coach Rocky – Server-Regeln (Apache / Hostinger)
+# Stand 09.11.2026. Hauptadresse: https://www.coachrocky.de
+
+# Unbekannte Adressen: Status 404 bzw. 410, angezeigt wird die Fehlerseite der Website
+ErrorDocument 404 /index.html
+ErrorDocument 410 /index.html
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+
+	# 1. Hauptadresse: coachrocky.de -> www.coachrocky.de (Pfad und Parameter bleiben erhalten)
+	RewriteCond %{HTTP_HOST} ^coachrocky\.de$ [NC]
+	RewriteRule ^(.*)$ https://www.coachrocky.de/$1 [R=301,L]
+
+	# 2. Alte Adressen -> neue Seite (301, dauerhaft)
+	RewriteRule ^personal-trainer-(wandsbek|winterhude|barmbek|eilbek|dulsberg|uhlenhorst|wellingsbuettel)/?$ /standort [R=301,L]
+	RewriteRule ^(schulterprobleme|krafttraining-frauen|warum-krafttraining-fuer-frauen|mythos-rosa-hanteln|starke-frauen)/?$ /wissen [R=301,L]
+	RewriteRule ^methodik/?$ /uber-rocky [R=301,L]
+	RewriteRule ^(preise|online-coaching|online-coaching/pakete)/?$ /personal-training [R=301,L]
+	RewriteRule ^testimonials/?$ / [R=301,L]
+	RewriteRule ^(boxer-zusatztraining-pdf|schulterschmerz-beruhigen-pdf|programme|schulterprogramm|boxenprogramm)/?$ /shop [R=301,L]
+
+	# 3. Gelöschte Seite ohne Nachfolger: 410 (Gone)
+	RewriteRule ^knieprobleme/?$ - [G,L]
+
+	# 4. Vorhandene Dateien und Ordner (Bilder, Skripte, Schriften, robots.txt, sitemap.xml)
+	RewriteCond %{REQUEST_FILENAME} -f [OR]
+	RewriteCond %{REQUEST_FILENAME} -d
+	RewriteRule ^ - [L]
+
+	# 5. Die Seiten der Website
+	RewriteRule ^(personal-training|standort|uber-rocky|shop|wissen|app|newsletter|impressum|datenschutz|agb|widerrufsbelehrung)/?$ index.html [L]
+
+	# 6. Alles andere: echter 404-Status
+	RewriteRule ^ - [R=404,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+	Header set X-Powered-By "Hostinger Horizons"
+
+	# Cache everything on CDN by default
+	Header set Cache-Control "public, s-maxage=604800, max-age=0"
+
+	# Cache in browser all assets
+	<If "%{REQUEST_URI} =~ m#^/assets/.*$#">
+		Header set Cache-Control "public, max-age=604800"
+	</If>
+</IfModule>

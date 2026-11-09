@@ -26,7 +26,7 @@ Personal Training Hamburg-Barmbek. Dieses Projekt ist der Code des Horizons-Klon
 ## Go-live-Checkliste 17.12.2026
 1. `noindex` aus `index.html` entfernen, Entwurf-Banner entfernen.
 2. Cookie-Banner: Ablehnen und Akzeptieren gleichwertig, Google Ads und Meta-Pixel erst nach Einwilligung (Logik in `src/lib/cookieConsent.js`, `consent.js`).
-3. Fotos: 9 Bilder liegen auf dem Horizons-Bildserver. Herunterladen und in `public/brand` ablegen, falls die Seite Horizons verlässt.
+3. Fotos: liegen in `apps/web/public/fotos` (9 Bilder, vom Horizons-Bildserver übernommen am 09.11.2026). Neue Fotos dort ablegen und mit `/fotos/<name>.jpg` einbinden.
 4. `sitemap.xml`: Datum aktualisieren, nur die 12 Seiten.
 5. Domain-Umzug klären (www als Hauptadresse), danach in der Search Console die Sitemap einreichen.
 6. Alte Adressen aus dem Original, die nicht in `.htaccess` stehen, vorher gegen die Original-Sitemap prüfen.

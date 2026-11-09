@@ -38,7 +38,7 @@ const StandortPage = () => (
           </div>
           <div>
             <img
-              src="https://horizons-cdn.hostinger.com/ad386736-af24-4dd7-90cb-e0d579c78642/5b5b2200bd3fa9afc19154f7413924b3.jpg"
+              src="/fotos/standort-studio.jpg"
               alt="Personal Training im Studio in Hamburg-Barmbek"
               className="rounded-sm border border-border w-full h-auto"
               width="800"

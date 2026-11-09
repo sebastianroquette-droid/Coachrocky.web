@@ -32,7 +32,7 @@ const PersonalTrainingPage = () => (
             </p>
           </div>
           <div>
-            <img src="https://horizons-cdn.hostinger.com/ad386736-af24-4dd7-90cb-e0d579c78642/25ef45137e0e49124eeb28afa87d0696.jpg" alt="Coach Rocky mit Faszienrolle im Studio" className="rounded-sm w-full max-h-[360px] lg:w-[315px] lg:max-h-[420px] lg:ml-auto aspect-[3/4] object-cover" width="315" height="420" loading="lazy" />
+            <img src="/fotos/personal-training-faszienrolle.jpg" alt="Coach Rocky mit Faszienrolle im Studio" className="rounded-sm w-full max-h-[360px] lg:w-[315px] lg:max-h-[420px] lg:ml-auto aspect-[3/4] object-cover" width="315" height="420" loading="lazy" />
           </div>
         </div>
       </div>
@@ -90,7 +90,7 @@ const PersonalTrainingPage = () => (
           </li>
         </ol>
         </div>
-        <img src="https://horizons-cdn.hostinger.com/ad386736-af24-4dd7-90cb-e0d579c78642/bcbc98ed6e8fd87d35c544b9f65c5636.jpg" alt="Coach Rocky betreut eine Übung auf der Bank im Studio" className="rounded-sm w-full aspect-[3/4] object-cover" width="600" height="800" loading="lazy" />
+        <img src="/fotos/personal-training-uebung.jpg" alt="Coach Rocky betreut eine Übung auf der Bank im Studio" className="rounded-sm w-full aspect-[3/4] object-cover" width="600" height="800" loading="lazy" />
       </div>
     </section>
 
@@ -117,7 +117,7 @@ const PersonalTrainingPage = () => (
           </li>
         </ul>
         </div>
-        <img src="https://horizons-cdn.hostinger.com/ad386736-af24-4dd7-90cb-e0d579c78642/a02dbbd89484a76a3390a91958720e45.jpg" alt="Coach Rocky erklärt eine Übung mit Kurzhanteln" className="rounded-sm w-full aspect-[3/4] object-cover" width="600" height="800" loading="lazy" />
+        <img src="/fotos/personal-training-erklaerung.jpg" alt="Coach Rocky erklärt eine Übung mit Kurzhanteln" className="rounded-sm w-full aspect-[3/4] object-cover" width="600" height="800" loading="lazy" />
       </div>
     </section>
 

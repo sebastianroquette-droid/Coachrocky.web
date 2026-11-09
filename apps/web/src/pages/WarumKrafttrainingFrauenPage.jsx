@@ -21,7 +21,7 @@ const WarumKrafttrainingFrauenPage = () => (
           </div>
           <div>
             <img
-              src="https://horizons-cdn.hostinger.com/ad386736-af24-4dd7-90cb-e0d579c78642/84e6aaf351ad3fb8452c8f8bed8b08c5.jpg"
+              src="/fotos/warum-krafttraining-gruppe.jpg"
               alt="Coach Rocky trainiert eine Gruppe mit Gewichten im Personal Training in Hamburg"
               className="rounded-sm border border-border w-full h-auto object-cover"
               width="800"

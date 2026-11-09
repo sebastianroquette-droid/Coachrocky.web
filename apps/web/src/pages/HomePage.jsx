@@ -88,7 +88,7 @@ const HomePage = () => (
           </div>
           <div>
             <img
-              src="https://horizons-cdn.hostinger.com/ad386736-af24-4dd7-90cb-e0d579c78642/f860da999d5b5763c4538026b24bc871.jpg"
+              src="/fotos/startseite-hero.jpg"
               alt="Coach Rocky im Coach-Rocky-Shirt, an eine Betonwand gelehnt"
               className="rounded-sm w-full aspect-[4/3] object-cover object-right"
               width="800"
@@ -239,7 +239,7 @@ const HomePage = () => (
           </div>
           <div>
             <img
-              src="https://horizons-cdn.hostinger.com/ad386736-af24-4dd7-90cb-e0d579c78642/4e0df7e2ad3624101097cdc7346f4706.jpg"
+              src="/fotos/startseite-rote-wand.jpg"
               alt="Coach Rocky, Personal Trainer in Hamburg"
               className="rounded-sm border border-border w-full h-auto"
               width="800"

@@ -6,8 +6,15 @@ Personal Training Hamburg-Barmbek. Dieses Projekt ist der Code des Horizons-Klon
 - `apps/web` – Website (React, Vite, Tailwind). Seiten in `src/pages`, Layout/Meta in `src/components/Layout.jsx`, Routen und Weiterleitungen in `src/App.jsx`.
 - `apps/api` – Node-Server für Newsletter und Hostinger Reach. Newsletter-Formular ist bewusst deaktiviert.
 - `apps/pocketbase` – Datenbank. Zugangsdaten nur über Umgebungsvariablen.
-- `apps/web/public/.htaccess` – echte 301-Weiterleitungen, 404/410-Status, Umleitung coachrocky.de -> www.
+- `apps/web/public/.htaccess`, `robots.txt`, `sitemap.xml` – fertige Regeln für einen eigenen Server (lokal mit Apache getestet). **In Horizons wirken sie nicht** (siehe „Betrieb und Grenzen“).
 - Befehle: `bun install`, `npm run build` (Ausgabe: `dist/apps/web`), `npm run dev`.
+
+## Betrieb und Grenzen (Stand 10.11.2026, Entscheidung Coach: Weg A)
+- Die Seite läuft bei **Hostinger Horizons** (Business-Tarif, Vertrag verlängert). Der Code hier ist Arbeitsgrundlage und Sicherung. Änderungen gehen per Anweisung an Horizons ins Live-System, nicht durch Hochladen aus GitHub.
+- Horizons verwaltet `robots.txt` und `sitemap.xml` selbst (schreibgeschützt, Antwort des Horizons-Assistenten 09.11. und 10.11.). Edit-Versuche mit `.htaccess`, `robots.txt` und `sitemap.xml` am Klon blieben ohne Wirkung. SEO- und Indexierungsoptionen lassen sich nur per Prompt einstellen.
+- Echte 301-Weiterleitungen und echter 404-Status sind in Horizons nicht verfügbar. Alte Adressen springen per Skript (`src/App.jsx`), Fehlerseite meldet Status 200. Bewusst zurückgestellt, kleine SEO-Schwäche, Besucher merken nichts.
+- Newsletter: Formular ruft `/hcgi/api/newsletter` (Horizons-Plattform). Der Server hält den Reach-Schlüssel und leitet an Hostinger Reach weiter. Die Datenbank (PocketBase) nutzt die Website nicht.
+- Weg B (eigene Website aus GitHub, ebenfalls bei Hostinger) ist nur eine Option für später. Dafür wären nötig: Newsletter-Server selbst betreiben, `/hcgi`-Aufrufe anpassen, Reach-Schlüssel als Umgebungsvariable. Fotos liegen dafür bereits im Zweig `fotos-lokal`.
 
 ## Feste Regeln
 - Hauptadresse ist **https://www.coachrocky.de**. Canonical entsteht automatisch aus der aktuellen Domain.
@@ -23,11 +30,14 @@ Personal Training Hamburg-Barmbek. Dieses Projekt ist der Code des Horizons-Klon
 - `index.html` hat `noindex,nofollow`, und der Banner „Entwurf – nicht öffentlich“ ist aktiv (`DraftBanner.jsx`).
 - Newsletter-Formular deaktiviert, bis Double-Opt-in in Hostinger Reach abgeschaltet ist.
 
-## Go-live-Checkliste 17.12.2026
-1. `noindex` aus `index.html` entfernen, Entwurf-Banner entfernen.
-2. Cookie-Banner: Ablehnen und Akzeptieren gleichwertig, Google Ads und Meta-Pixel erst nach Einwilligung (Logik in `src/lib/cookieConsent.js`, `consent.js`).
-3. Fotos: 9 Bilder liegen auf dem Horizons-Bildserver. Herunterladen und in `public/brand` ablegen, falls die Seite Horizons verlässt.
-4. `sitemap.xml`: Datum aktualisieren, nur die 12 Seiten.
-5. Domain-Umzug klären (www als Hauptadresse), danach in der Search Console die Sitemap einreichen.
-6. Alte Adressen aus dem Original, die nicht in `.htaccess` stehen, vorher gegen die Original-Sitemap prüfen.
-7. Nach dem Deploy: Statuscodes prüfen (Seiten 200, alte Adressen 301, /knieprobleme 410, unbekannt 404).
+## Go-live-Checkliste 17.12.2026 (Weg A, über Horizons)
+1. `noindex` und Entwurf-Banner entfernen (per Anweisung an Horizons). Erst nach ausdrücklichem GO des Coaches.
+2. Canonical und `og:url` **fest auf https://www.coachrocky.de** + Pfad setzen (nicht aus der aktuellen Domain ableiten). Das ersetzt die fehlende Weiterleitung coachrocky.de -> www.
+3. Cookie-Banner: Ablehnen und Akzeptieren gleichwertig, Google Ads und Meta-Pixel erst nach Einwilligung (Logik in `src/lib/cookieConsent.js`, `consent.js`).
+4. Newsletter-Formular erst aktivieren, wenn Double-Opt-in in Hostinger Reach abgeschaltet ist.
+5. Nach dem Go-live Sitemap der Plattform prüfen. Ist sie veraltet (enthält Weiterleitungsseiten, lässt Standort, Shop, Wissen, App, Newsletter aus), den Horizons-Assistenten per Prompt um Aktualisierung bitten. Search Console und Unternehmensprofil legt der Coach mit dem Gmail-Konto an.
+6. Alte Adressen aus dem Original vorher gegen die Original-Sitemap prüfen.
+7. Nach dem Go-live prüfen: alle 12 Seiten laden, Canonical zeigt auf www, Tracking erst nach Einwilligung, Newsletter-Status.
+
+## Später, ohne Eile
+- Echte 301-Weiterleitungen, echter 404-Status, eigene Sitemap: nur mit Weg B oder Änderungen auf DNS-Ebene (kein Cloudflare vor dem Go-live, DNS liegt bei Hostinger).

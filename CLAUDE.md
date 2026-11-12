@@ -34,10 +34,14 @@ Personal Training Hamburg-Barmbek. Dieses Projekt ist der Code des Horizons-Klon
 1. `noindex` und Entwurf-Banner entfernen (per Anweisung an Horizons). Erst nach ausdrücklichem GO des Coaches.
 2. Canonical und `og:url` **fest auf https://www.coachrocky.de** + Pfad setzen (nicht aus der aktuellen Domain ableiten). Das ersetzt die fehlende Weiterleitung coachrocky.de -> www.
 3. Cookie-Banner: Ablehnen und Akzeptieren gleichwertig, Google Ads und Meta-Pixel erst nach Einwilligung (Logik in `src/lib/cookieConsent.js`, `consent.js`).
-4. Newsletter-Formular erst aktivieren, wenn Double-Opt-in in Hostinger Reach abgeschaltet ist.
+4. Newsletter: Im Klon ist Hostinger Reach nicht eingerichtet (`/hcgi/api/health/newsletter` meldet `hostinger_configured: false`, Anmeldung endet mit Fehlermeldung). Nach der Übernahme auf das Original Reach einrichten, Double-Opt-in abschalten und eine Testanmeldung machen (Entscheidung Coach 12.11.2026).
 5. Nach dem Go-live Sitemap der Plattform prüfen. Ist sie veraltet (enthält Weiterleitungsseiten, lässt Standort, Shop, Wissen, App, Newsletter aus), den Horizons-Assistenten per Prompt um Aktualisierung bitten. Search Console und Unternehmensprofil legt der Coach mit dem Gmail-Konto an.
 6. Alte Adressen aus dem Original vorher gegen die Original-Sitemap prüfen.
 7. Nach dem Go-live prüfen: alle 12 Seiten laden, Canonical zeigt auf www, Tracking erst nach Einwilligung, Newsletter-Status.
+
+## Entscheidungen 12.11.2026 (Coach)
+- App-Preise Launchphase 1 bestätigt, Notion-Status auf Active gesetzt. Einführungspreis: 21 Tage nach Launchtag oder Freundschaftscode.
+- Kundenstimmen bleiben wörtlich und mit Hervorhebung, sie sind Aussagen der Kunden (Coach-Entscheidung, keine Anwaltsprüfung).
 
 ## Später, ohne Eile
 - Echte 301-Weiterleitungen, echter 404-Status, eigene Sitemap: nur mit Weg B oder Änderungen auf DNS-Ebene (kein Cloudflare vor dem Go-live, DNS liegt bei Hostinger).

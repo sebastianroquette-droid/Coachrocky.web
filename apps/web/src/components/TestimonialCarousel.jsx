@@ -52,6 +52,12 @@ const testimonials = [
     quote:
       'Das Training mit Rocky ist genau das, was ich gebraucht habe. Als Anfängerin im Krafttraining hatte ich großen Respekt vor den schweren Gewichten und der richtigen Ausführung. Rocky nimmt sich extrem viel Zeit, erklärt jede Bewegung im Detail und achtet penibel auf die richtige Haltung. Durch das geduldige Coaching habe ich meine Angst verloren und stattdessen eine riesige Leidenschaft für das Krafttraining entwickelt. Ich fühle mich so stark und selbstbewusst wie noch nie zuvor!',
   },
+  {
+    name: 'Dirk',
+    highlight: 'konkrete Werkzeuge an die Hand gegeben',
+    quote:
+      'Manchmal bringt einen Routine nicht weiter – gerade im Sport können neue Impulse entscheidend sein, um Fortschritte zu machen und über die eigenen Grenzen hinauszugehen. Rocky kannte mich bereits aus vorherigen Gruppeneinheiten und konnte dadurch sehr schnell und präzise meine individuellen Schwachstellen erkennen. Mit gezielten Trainingstipps und passenden Übungen in PT-Einheiten hat er mir konkrete Werkzeuge an die Hand gegeben, um an den entscheidenden Stellschrauben zu arbeiten. Dank dieser gezielten Anpassungen konnte ich mein Training erstaunlich schnell auf ein neues Niveau heben. Die Veränderungen helfen mir nachhaltig weiter und werden mein Training auch langfristig positiv beeinflussen.',
+  },
 ];
 
 // Rendert das Zitat mit genau einer hervorgehobenen Textstelle (Marker-Hintergrund).
